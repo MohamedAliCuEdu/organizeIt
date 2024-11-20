@@ -1,0 +1,492 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+
+// 1. all notes page:
+.all-notes-page .container {
+  width: 100%;
+  .notes-header,
+  .tags-filter {
+    margin: 0 0 10px;
+  }
+  .tags-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    button {
+      text-transform: capitalize;
+    }
+  }
+  .notes-content {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 0;
+    .notes-list {
+      flex: 1;
+      &.notes-grid {
+        max-height: 70vh;
+        @include grid-columns-auto(minmax(280px, 1fr), 10px);
+        align-content: flex-start;
+        padding: $items-list-padding;
+        overflow-y: auto;
+        overflow-x: hidden;
+        .add-note {
+          @include flex-center-v(null);
+          height: 200px;
+          background-color: $main-light-bg;
+          cursor: pointer;
+          @include respond-up(usm) {
+            height: 180px;
+          }
+          svg {
+            font-size: 50px;
+            transition: 0.8s;
+          }
+          h3 {
+            margin-top: 10px;
+          }
+          &:hover {
+            background-color: $dark-bg-hover;
+            svg,
+            h3 {
+              color: $font-light-color;
+            }
+            svg {
+              transform: translateY(-10px);
+            }
+          }
+        }
+      }
+    }
+    .notes-board {
+      min-width: 220px;
+      background-color: $main-light-bg;
+      padding: $board-padding;
+      border-radius: $border-main-raduis;
+      overflow: hidden;
+      position: relative;
+      &::before {
+        @include ele(100%, 10px, $main-dark-bg);
+        top: 0;
+        left: 0;
+      }
+      @include respond-up(sm) {
+        display: none;
+      }
+      h4 {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 10px;
+        position: relative;
+        svg {
+          font-size: 26px;
+        }
+      }
+      ul {
+        padding: 0 10px;
+        li {
+          @include flex-between-h(15px);
+        }
+      }
+      .general-stats {
+        position: relative;
+        margin-bottom: 20px;
+        li {
+          padding: 8px;
+          margin-bottom: 10px;
+          border: 1px solid $border-alt-color;
+          span {
+            &.name {
+              font-size: 16px;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              flex: 1;
+              color: $font-dark-color;
+              .icon {
+                @include icon-shape(
+                  30px,
+                  30px,
+                  $white-gray-bg,
+                  $alt-font-color
+                );
+                svg {
+                  font-size: 22px;
+                }
+              }
+            }
+          }
+        }
+        &::before {
+          @include ele(70%, 1px, $border-alt-color);
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+      .tags-stats li:not(:last-of-type) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+// 2. note page:
+.note-page .container {
+  .note-content {
+    background-color: $main-light-bg;
+    padding: 10px;
+    border: 1px solid $border-ccc;
+    border-radius: $border-main-raduis;
+    @include respond-up(usm) {
+      padding: 5px 10px;
+    }
+    position: relative;
+    .note-dates {
+      position: absolute;
+      top: -30px;
+      right: 0;
+      font-weight: bold;
+      color: $alt-font-color;
+      text-align: right;
+      @include respond-up(xsm) {
+        top: -22px;
+      }
+    }
+    form {
+      position: relative;
+      .note-inputs-section {
+        & > div {
+          border-bottom: 1px solid $border-ccc;
+        }
+        .title-div {
+          @include flex-center-h(null);
+          margin-bottom: 5px;
+          padding-bottom: 5px;
+          svg {
+            color: $alt-font-color;
+            background-color: $white-gray-bg;
+            font-size: 32px;
+            padding: 3px;
+          }
+          input[type="text"] {
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: capitalize;
+          }
+        }
+        .textarea-div {
+          padding: 5px 0;
+          textarea {
+            width: 100%;
+            height: 350px;
+            padding-right: 10px;
+            overflow-y: auto;
+            overflow-x: hidden;
+          }
+          .content-counter {
+            display: block;
+            width: fit-content;
+            color: $font-dark-color;
+            font-size: 15px;
+            margin: 5px 15px;
+            margin-left: auto;
+            border-radius: $border-main-raduis;
+          }
+        }
+        @include respond-up(xsm) {
+          .title-div input[type="text"] {
+            font-size: 18px;
+            &::placeholder {
+              font-size: 18px;
+            }
+          }
+        }
+        @include respond-up(usm) {
+          .title-div {
+            input[type="text"] {
+              font-size: 16px;
+              &::placeholder {
+                font-size: 16px;
+              }
+            }
+            svg {
+              font-size: 25px;
+            }
+          }
+          .textarea-div {
+            textarea {
+              height: 300px;
+            }
+            .content-counter {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .tags-inputs-section {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        position: relative;
+        margin: 10px 0 15px;
+        .note-tags {
+          min-height: 30px;
+          flex-basis: 100%;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 5px;
+          p {
+            display: flex;
+            gap: 5px;
+            svg {
+              font-size: 20px;
+            }
+          }
+          .tag-span {
+            @include flex-between-h(3px);
+            svg {
+              font-size: 20px;
+              &:hover {
+                color: $red;
+              }
+            }
+          }
+        }
+        select {
+          font-size: 14px;
+          padding: 5px;
+          border: 1px solid $border-ccc;
+          border-radius: $border-main-raduis;
+          @include respond-up(usm) {
+            font-size: 12px;
+            padding: 0px;
+          }
+        }
+        .tag-input {
+          display: flex;
+          input[type="text"] {
+            border-radius: 0;
+            border: 1px solid $border-ccc;
+            border-right: none;
+          }
+          button {
+            font-size: 20px;
+            padding: 0 5px;
+          }
+        }
+      }
+    }
+  }
+}
+.notes-header,
+.archive-notes-header {
+  background-color: $main-light-bg;
+  padding: $section-header-padding;
+  border-radius: $border-main-raduis;
+  margin-bottom: 10px;
+  .header-content {
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    .header-btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+  @include respond-up(xsm) {
+    padding: 5px;
+  }
+}
+// 3. archive notes page:
+.archive-notes-page .container {
+  & > .main-back-btn {
+    margin: 5px 0 10px;
+  }
+  .archive-notes-list.notes-grid {
+    width: 100%;
+    max-height: 70vh;
+    @include grid-columns-auto(minmax(280px, 1fr), 10px);
+    align-content: flex-start;
+    padding: $items-list-padding;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+.note-card {
+  height: 200px;
+  background-color: $main-light-bg;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px 15px;
+  gap: 5px;
+  box-shadow: $main-shadow;
+  position: relative;
+  transition: $main-transition;
+  position: relative;
+  @include respond-up(usm) {
+    height: 180px;
+  }
+  &:hover {
+    background-color: $light-bg-hover;
+  }
+  .note-content {
+    flex: 1;
+    h5 {
+      margin-bottom: 5px;
+    }
+    p {
+      flex: 1;
+      font-size: 14px;
+      line-break: anywhere;
+      line-height: 1.5; /* Use auto height to allow line clamp to work */
+      display: -webkit-box; /* Use a flexible box layout */
+      -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+      line-clamp: 4;
+      -webkit-line-clamp: 4; /* Limit the text to 5 lines */
+      overflow: hidden; /* Hide any overflow text */
+      text-overflow: ellipsis; /* Add an ellipsis (...) for overflow text */
+    }
+  }
+  .info {
+    margin-top: 5px;
+    .tags {
+      display: flex;
+      gap: 5px;
+      overflow-x: hidden;
+      margin-bottom: 5px;
+      p {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        font-size: 14px;
+        svg {
+          margin-right: 2px;
+        }
+      }
+    }
+    .note-date {
+      font-size: 14px;
+      color: $alt-font-color;
+      font-weight: 600;
+    }
+    @include respond-up(usm) {
+      .tags p,
+      .note-date {
+        font-size: 12px;
+      }
+    }
+  }
+  .note-options {
+    display: flex;
+    gap: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    visibility: hidden;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    button {
+      @include flex-center-h(null);
+      padding: 2px;
+      &.delete-btn {
+        font-size: 18px;
+        &:hover {
+          color: $red;
+        }
+      }
+      &.archive-btn {
+        font-size: 23px;
+        &:hover {
+          color: $main-light-bg;
+          background-color: gray;
+          border-radius: $border-main-raduis;
+        }
+      }
+      @include respond-up(xsm) {
+        visibility: visible;
+        &.delete-btn {
+          font-size: 15px;
+        }
+        &.archive-btn {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  &:hover .note-options {
+    visibility: visible;
+  }
+}
+// components:
+.note-view-popup .popup-container {
+  width: 550px;
+  .content {
+    padding: 15px 15px 25px;
+    .note-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      position: relative;
+      svg {
+        color: $alt-font-color;
+        background-color: $white-gray-bg;
+        font-size: 28px;
+        padding: 3px;
+      }
+      &::before {
+        @include ele(60%, 1px, $border-ccc);
+        bottom: 0;
+      }
+    }
+    .note-content {
+      max-height: 500px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      line-height: 1.7;
+      padding: 10px 20px 20px 0;
+    }
+    .note-tags {
+      display: flex;
+      gap: 5px;
+      margin-top: 5px;
+      padding-top: 10px;
+      position: relative;
+      p {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      &::before {
+        @include ele(60%, 1px, $border-ccc);
+        top: 0;
+      }
+    }
+  }
+  @include respond-up(sm) {
+    .content .note-content {
+      max-height: 400px;
+    }
+  }
+  @include respond-up(xsm) {
+    width: 100%;
+  }
+  @include respond-up(usm) {
+    .content {
+      .note-title svg {
+        font-size: 22px;
+      }
+      .note-content {
+        height: 300px;
+      }
+    }
+  }
+}

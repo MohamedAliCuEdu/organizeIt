@@ -1,0 +1,102 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+@use "../helpers/animations" as *;
+
+* {
+  font-family: $main-font-family;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label {
+  text-transform: capitalize;
+  line-height: 1.4;
+  color: $font-dark-color;
+}
+label,
+input,
+textarea {
+  color: $font-dark-color;
+}
+textarea {
+  line-height: 1.8;
+  @include respond-up(xsm) {
+    line-height: 1.4;
+  }
+}
+label {
+  font-weight: bold;
+}
+
+p {
+  font-size: 16px;
+  @include respond-up(xsm) {
+    font-size: 14px;
+  }
+  @include respond-up(usm) {
+    font-size: 12px;
+  }
+}
+
+h1 {
+  font-size: 30px;
+  @include respond-up(xsm) {
+    font-size: 22px;
+  }
+}
+h2 {
+  font-size: 26px;
+  @include respond-up(xsm) {
+    font-size: 20px;
+  }
+  @include respond-up(xsm) {
+    font-size: 18px;
+  }
+}
+h3 {
+  font-size: 20px;
+  @include respond-up(xsm) {
+    font-size: 18px;
+  }
+  @include respond-up(usm) {
+    font-size: 14px;
+  }
+}
+h4 {
+  font-size: 18px;
+  @include respond-up(xsm) {
+    font-size: 16px;
+  }
+  @include respond-up(usm) {
+    font-size: 12px;
+  }
+}
+h5 {
+  font-size: 16px;
+  @include respond-up(usm) {
+    font-size: 14px;
+  }
+}
+
+label,
+::placeholder {
+  @include respond-up(usm) {
+    font-size: 12px;
+  }
+}
+input,
+textarea {
+  font-size: 16px;
+  @include respond-up(xsm) {
+    font-size: 14px;
+  }
+  @include respond-up(usm) {
+    font-size: 12px;
+  }
+}

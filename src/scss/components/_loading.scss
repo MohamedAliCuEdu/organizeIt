@@ -1,0 +1,52 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+@use "../helpers/animations" as *;
+
+.bullets-loading {
+  width: 100%;
+  margin-top: 100px;
+  @include flex-center-h(null);
+  .loader {
+    width: 15px;
+    @include respond-up(xsm) {
+      width: 10px;
+    }
+    aspect-ratio: 1;
+    border-radius: 50%;
+    clip-path: inset(-45px);
+    box-shadow: -60px 15px, -60px 15px, -60px 15px;
+    transform: translateY(-15px);
+    animation: l19 1.5s infinite linear;
+  }
+}
+.board-loading{
+  height: 150px;
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 50px);
+  .load-wraper {
+    width: 100%;
+    background-color: rgb(230, 227, 227);
+    margin-bottom: 15px;
+    border-radius: $border-main-raduis;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    .activity {
+      width: 45%;
+      height: 100%;
+      position: absolute;
+      left: -45%;
+      background-image: linear-gradient(
+        to left,
+        rgba(251, 251, 251, 0.05),
+        rgba(251, 251, 251, 0.3),
+        rgba(251, 251, 251, 0.6),
+        rgba(251, 251, 251, 0.3),
+        rgba(251, 251, 251, 0.05)
+      );
+      animation: loading 1s infinite;
+      z-index: 45;
+    }
+  }
+}

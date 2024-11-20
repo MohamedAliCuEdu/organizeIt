@@ -1,0 +1,185 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+
+.md-btn {
+  font-size: 16px;
+  min-width: 80px;
+  font-weight: 600;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: $border-main-raduis;
+  @include respond-up(usm) {
+    min-width: 50px;
+    font-size: 12px;
+    padding: 3px 5px;
+  }
+}
+.sm-btn {
+  font-size: 16px;
+  padding: 3px 6px;
+  border-radius: $border-main-raduis;
+  @include respond-up(usm) {
+    font-size: 12px;
+    padding: 2px;
+  }
+}
+.xsm-btn {
+  font-size: 14px;
+  padding: 3px;
+  border-radius: $border-main-raduis;
+  @include respond-up(usm) {
+    font-size: 12px;
+    padding: 2px;
+  }
+}
+//---------------------
+.logo-btn {
+  background-color: $main-light-bg;
+  text-align: center;
+  a {
+    font-family: $alt-font-family;
+    font-weight: 600;
+    color: $font-dark-color;
+    font-size: 22px;
+    @include respond-up(xsm){
+      font-size: 18px;
+    }
+  }
+}
+//----------- icon btn:
+.icon-btn {
+  @include flex-center-h(null);
+  padding: 2px;
+  border-radius: $border-main-raduis;
+  &.xlg-icon {
+    font-size: 32px;
+    @include respond-up(xsm) {
+      font-size: 28px;
+    }
+  }
+  &.lg-icon {
+    font-size: 25px;
+    @include respond-up(xsm) {
+      font-size: 22px;
+    }
+    @include respond-up(usm) {
+      font-size: 16px;
+    }
+  }
+  &.md-icon {
+    font-size: 18px;
+  }
+  &.sm-icon {
+    font-size: 16px;
+  }
+}
+
+.main-back-btn {
+  @include flex-center-h(5px);
+  &:hover {
+    svg {
+      transform: translateX(-5px);
+      transition: transform 0.3s linear;
+    }
+  }
+}
+.red-btn{
+  background-color: $red;
+  color: $font-light-color;
+  &:hover{
+    background-color: $red-hover;
+    
+  }
+}
+.green-btn{
+  background-color: $green;
+  color: $font-light-color;
+  &:hover{
+    background-color: $green-hover;
+    
+  }
+}
+.dark-btn {
+  color: $font-light-color;
+  background-color: $main-dark-bg;
+  &:hover,
+  &:disabled {
+    color: $alt-font-color;
+    background-color: $dark-bg-hover;
+  }
+  &:disabled {
+    color: $alt-font-color;
+  }
+  &.active {
+    color: $font-dark-color;
+    background-color: $gray-bg;
+  }
+}
+.blue-btn {
+  color: $font-light-color;
+  background-color: $blue;
+  &:hover {
+    background-color: $blue-hover;
+  }
+  &:disabled {
+    background-color: $blue-disabled;
+  }
+  &.active {
+    background-color: $gray-bg;
+  }
+}
+
+.gray-btn { 
+  color: $font-dark-color;
+  background-color: $gray-bg;
+}
+.white-gray-btn {
+  color: $font-dark-color;
+  background-color: $white-gray-bg;
+}
+.dark-hover {
+  &.active,
+  &:hover {
+    color: $font-light-color;
+    background-color: $main-dark-bg;
+  }
+}
+
+.count-btn {
+  font-weight: 600;
+  font-size: 16px;
+  background-color: $white-gray-bg;
+  padding: 3px;
+  border-radius: $border-main-raduis;
+  @include respond-up(usm) {
+    font-size: 12px;
+  }
+}
+
+.delete-all-btn {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: $font-light-color;
+  background-color: $red;
+  font-size: 16px;
+  padding: 3px;
+  border: 1px solid transparent;
+  border-radius: $border-main-raduis;
+  &:hover {
+    color: $red;
+    background-color: $main-light-bg;
+    border-color: $red;
+  }
+  &:disabled {
+    color: $font-light-color;
+    background-color: #f57c82;
+    border-color: transparent;
+  }
+  @include respond-up(xsm) {
+    font-size: 12px;
+    gap: 3px;
+  }
+}
+

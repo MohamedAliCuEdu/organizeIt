@@ -1,0 +1,167 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+@use "../helpers/animations" as *;
+
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0;
+  svg {
+    background-color: $main-light-bg;
+    box-shadow: $main-shadow;
+    font-size: 35px;
+    padding: 4px;
+  }
+  @include respond-up(xsm) {
+    margin: 5px 0;
+    svg {
+      font-size: 26px;
+      padding: 2px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .notfound-page .content {
+    img {
+      width: 150px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    a {
+      font-size: 16px;
+      padding: 5px 10px;
+    }
+  }
+}
+.form-err-msg {
+  width: 100%;
+  color: $red;
+  font-weight: 600;
+  position: absolute;
+  bottom: -8px;
+  text-align: center;
+}
+
+.error-msg-div {
+  width: 100%;
+  text-align: center;
+  margin-top: 80px;
+  p{
+    width: 80%;
+    font-weight: 600;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  @include respond-up(xsm) {
+    video {
+      width: 100px;
+    }
+  }
+}
+
+.no-results-match {
+  width: 100%;
+  text-align: center;
+  margin: 30px auto 20px;
+  img {
+    width: 180px;
+    background-color: $main-light-bg;
+    box-shadow: $main-shadow;
+    padding: 5px 10px;
+    border-radius: $border-main-raduis;
+    @include respond-up(xsm) {
+      width: 150px;
+    }
+    @include respond-up(usm) {
+      width: 120px;
+    }
+  }
+  h4 {
+    margin-top: 15px;
+  }
+}
+
+.empty-list {
+  flex: 1;
+  margin: 80px auto;
+  text-align: center;
+  & > svg {
+    font-size: 120px;
+    color: $alt-font-color;
+  }
+  button,
+  a {
+    @include flex-between-h(5px);
+    width: fit-content;
+    margin: 15px auto;
+    border-radius: $border-main-raduis;
+  }
+  @include respond-up(xsm) {
+    & > svg {
+      font-size: 80px;
+    }
+  }
+}
+
+.celebrate-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.form-btns {
+  @include flex-center-h(15px);
+  margin: 10px 0 15px;
+  position: relative;
+  button {
+    width: 200px;
+    color: $font-light-color;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: $border-main-raduis;
+  }
+  @include respond-up(xsm) {
+    margin: 5px 0 0;
+    button {
+      width: 100px;
+      font-size: 16px;
+    }
+  }
+  @include respond-up(usm) {
+    button {
+      width: 70px;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  }
+}
+
+.search-div {
+  flex: 1;
+  border-radius: $border-main-raduis;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  input[type="search"] {
+    padding-right: 40px;
+  }
+  svg {
+    font-size: 22px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @include respond-up(usm) {
+    input[type="search"] {
+      padding-right: 30px;
+    }
+    svg {
+      font-size: 20px;
+    }
+  }
+}

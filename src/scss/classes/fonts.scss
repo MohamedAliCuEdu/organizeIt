@@ -1,0 +1,9 @@
+.bold {
+  font-weight: 600;
+}
+
+@for $i from 1 through 100 {
+  .fs-#{$i} {
+    font-size: #{$i}px;
+  }
+}

@@ -1,0 +1,23 @@
+@use "../helpers/variables" as *;
+@use "../helpers/breakpoints" as *;
+
+::-webkit-scrollbar-thumb {
+  background-color: $main-dark-bg;
+}
+::-webkit-scrollbar {
+  background-color: $white-gray-bg;
+}
+div,
+ul,
+textarea,
+section,
+p {
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-thumb {
+    width: $scroll-sm-width;
+    border-radius: $border-main-raduis;
+    @include respond-up(usm) {
+      width: $scroll-usm-width;
+    }
+  }
+}

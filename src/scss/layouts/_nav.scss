@@ -1,0 +1,81 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+
+#root > nav {
+  height: 100vh;
+  background-color: $main-dark-bg;
+  box-shadow: $main-shadow;
+  position: fixed;
+  width: 180px;
+  z-index: 20;
+  transition: $main-transation;
+  .nav-overlay {
+    @include overlay($overlay-shadow-bg);
+    width: 100vw;
+    display: none;
+  }
+  .container {
+    padding: 0;
+    .logo-btn {
+      padding: 10px;
+    }
+    ul.nav-links {
+      padding-top: 80px;
+      li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        color: $font-light-color;
+        padding: 15px;
+        &.active,
+        &:hover {
+          background-color: $dark-bg-hover;
+        }
+      }
+    }
+  }
+  .close-nav-btn {
+    @include icon-circle(50px, $main-dark-bg, $font-light-color);
+    display: none;
+    font-size: 32px;
+    color: $light-bg-hover;
+    position: absolute;
+    right: -80px;
+    top: 40%;
+    transform: translateY(-50%);
+    &:hover {
+      background-color: $dark-bg-hover;
+    }
+  }
+  @include respond-up(sm) {
+    left: -200px;
+    z-index: 200;
+    &.view {
+      left: 0;
+      .nav-overlay {
+        display: block;
+      }
+    }
+    .container ul.nav-links {
+      padding-top: 10px;
+    }
+    .close-nav-btn {
+      display: flex;
+    }
+  }
+  @include respond-up(usm) {
+    .container ul.nav-links li a {
+      font-size: 14px;
+      padding: 10px;
+    }
+    .close-nav-btn {
+      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      right: -60px;
+      top: 30%;
+    }
+  }
+}

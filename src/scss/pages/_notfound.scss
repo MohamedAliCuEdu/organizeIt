@@ -1,0 +1,26 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+
+body #root .notfound-page .container {
+  @include flex-center-v(null);
+  margin-top: 80px;
+  img {
+    width: 250px;
+  }
+  h2.notfound-msg {
+    color: $font-dark-color;
+    margin: 0 0 10px;
+  }
+  @include respond-up(sm) {
+    margin-top: 50px;
+    img {
+      width: 200px;
+    }
+  }
+  @include respond-up(usm) {
+    img {
+      width: 150px;
+    }
+  }
+}

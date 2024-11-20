@@ -1,0 +1,23 @@
+[
+  { "id": 1, "imgName": "banner-01", "imgUrl": "./banners/banner-01.jpg" },
+  { "id": 2, "imgName": "banner-02", "imgUrl": "./banners/banner-02.jpg" },
+  { "id": 3, "imgName": "banner-03", "imgUrl": "./banners/banner-03.jpg" },
+  { "id": 4, "imgName": "banner-04", "imgUrl": "./banners/banner-04.jpg" },
+  { "id": 5, "imgName": "banner-05", "imgUrl": "./banners/banner-05.jpg" },
+  { "id": 6, "imgName": "banner-06", "imgUrl": "./banners/banner-06.jpg" },
+  { "id": 7, "imgName": "banner-07", "imgUrl": "./banners/banner-07.jpg" },
+  { "id": 8, "imgName": "banner-08", "imgUrl": "./banners/banner-08.jpg" },
+  { "id": 9, "imgName": "banner-09", "imgUrl": "./banners/banner-09.jpg" },
+  { "id": 10, "imgName": "banner-10", "imgUrl": "./banners/banner-10.jpg" },
+  { "id": 11, "imgName": "banner-11", "imgUrl": "./banners/banner-11.jpg" },
+  { "id": 12, "imgName": "banner-12", "imgUrl": "./banners/banner-12.jpg" },
+  { "id": 13, "imgName": "banner-13", "imgUrl": "./banners/banner-13.jpg" },
+  { "id": 14, "imgName": "banner-14", "imgUrl": "./banners/banner-14.jpg" },
+  { "id": 15, "imgName": "banner-15", "imgUrl": "./banners/banner-15.jpg" },
+  { "id": 16, "imgName": "banner-16", "imgUrl": "./banners/banner-16.jpg" },
+  { "id": 17, "imgName": "banner-17", "imgUrl": "./banners/banner-17.jpg" },
+  { "id": 18, "imgName": "banner-18", "imgUrl": "./banners/banner-18.jpg" },
+  { "id": 19, "imgName": "banner-19", "imgUrl": "./banners/banner-19.jpg" },
+  { "id": 20, "imgName": "banner-20", "imgUrl": "./banners/banner-20.jpg" },
+  { "id": 21, "imgName": "banner-21", "imgUrl": "./banners/banner-21.jpg" }
+]

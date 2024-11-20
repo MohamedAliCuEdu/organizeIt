@@ -1,0 +1,149 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+
+body #root {
+  .signup-page,
+  .login-page {
+    .container {
+      @include flex-center-v(null);
+      margin: 50px auto;
+      @include respond-up(xsm) {
+        margin: 20px 0 0;
+      }
+      .content {
+        @include respond-up(xsm) {
+          width: 100%;
+        }
+        background-color: $main-light-bg;
+        padding: 25px 20px;
+        box-shadow: $main-shadow;
+        .form-title {
+          margin-bottom: 30px;
+          position: relative;
+          padding: 5px 0;
+          @include respond-up(xsm) {
+            margin-bottom: 15px;
+          }
+          &::before {
+            @include ele(85px, 3px, $main-dark-bg);
+            bottom: 0;
+            @include respond-up(xsm) {
+              width: 60px;
+            }
+          }
+          &::after {
+            @include ele(5px, 3px, $main-dark-bg);
+            left: 88px;
+            bottom: 0;
+            box-shadow: 8px 0 0 0;
+            @include respond-up(xsm) {
+              left: 63px;
+              box-shadow: 8px 0 0 0;
+            }
+          }
+        }
+        form {
+          position: relative;
+          .input-div {
+            margin-bottom: 25px;
+            position: relative;
+            .input-container {
+              margin-top: 10px;
+            }
+          }
+          .password-div .pwd-display-btn {
+            font-size: 22px;
+            position: absolute;
+            bottom: 0;
+            right: 10px;
+          }
+        }
+        .account-msg {
+          font-weight: 600;
+          text-align: center;
+          padding: 10px 0;
+          margin-top: 20px;
+          position: relative;
+          a {
+            color: $font-dark-color;
+            text-decoration: underline;
+          }
+          &::before {
+            @include ele(350px, 1px, $border-dark);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            @include respond-up(xsm) {
+              width: 250px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// signup page:
+body #root .signup-page .container {
+  .content form {
+    width: 100%;
+    @include respond-up(xsm) {
+      .input-div {
+        margin-bottom: 15px;
+        .input-container {
+          margin-top: 5px;
+        }
+      }
+    }
+    .group-inputs {
+      display: flex;
+      column-gap: 20px;
+      @include respond-up(xsm) {
+        flex-direction: column;
+      }
+      .input-div {
+        flex-basis: 50%;
+      }
+    }
+    .input-div.gender-div .gender-options {
+      width: 100%;
+      @include flex-center-h(25px);
+      padding: 5px 0 0;
+      label {
+        @include flex-center-h(10px);
+        flex-basis: 50%;
+        font-weight: 400;
+        padding: 10px;
+        border: 3px solid $border-light;
+        border-radius: $border-main-raduis;
+        svg {
+          font-size: 22px;
+        }
+      }
+      input {
+        display: none;
+        &:checked + label {
+          color: $blue;
+          border-color: $blue;
+        }
+      }
+    }
+  }
+}
+
+// login page:
+body #root .login-page .container {
+  .content form {
+    .remember-device {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 15px;
+      input[type="checkbox"] {
+        width: 27px;
+        height: 17px;
+      }
+    }
+  }
+}

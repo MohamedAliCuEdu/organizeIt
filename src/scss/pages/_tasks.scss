@@ -1,0 +1,221 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+
+body #root .tasks-page {
+  .container {
+    .tasks-header {
+      background-color: $main-light-bg;
+      padding: $section-header-padding;
+      margin: 10px auto;
+      .header-content {
+        max-width: 500px;
+        margin: 0 auto;
+        form {
+          display: flex;
+          gap: 5px;
+        }
+        .search-div {
+          margin-top: 5px;
+          cursor: pointer;
+          position: relative;
+          input[type="search"] {
+            padding-right: 40px;
+          }
+          svg {
+            font-size: 26px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+      @include respond-up(usm) {
+        padding: 5px;
+        margin: 5px auto;
+        .header-content .search-div {
+          margin-top: 3px;
+          input[type="search"] {
+            padding-right: 30px;
+          }
+          svg {
+            font-size: 20px;
+            right: 5px;
+          }
+        }
+      }
+    }
+    .status-filter {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+      button span {
+        margin-left: 5px;
+      }
+    }
+    .tasks-list {
+      height: 70vh;
+      padding: $items-list-padding;
+      overflow-y: auto;
+      li {
+        background-color: $main-light-bg;
+        position: relative;
+        &:not(:last-of-type) {
+          margin-bottom: 5px;
+        }
+        &:hover {
+          background-color: $light-bg-hover;
+        }
+        .task-container {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 15px;
+          padding-left: 50px;
+          input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+          }
+          .content {
+            width: 80%;
+            p {
+              word-wrap: break-word;
+              margin-bottom: 5px;
+            }
+            .task-info {
+              @include flex-between-h(10px);
+              .date {
+                font-style: italic;
+                color: $alt-font-color;
+              }
+            }
+          }
+          .task-options {
+            display: flex;
+            gap: 5px;
+            button {
+              width: 26px;
+              height: 26px;
+              color: $font-dark-color;
+              font-size: 20px;
+              border-radius: $border-main-raduis;
+              &.edit:hover {
+                color: $font-light-color;
+                background-color: $main-dark-bg;
+              }
+              &.delete:hover {
+                color: $main-light-bg;
+                background-color: $red;
+              }
+            }
+          }
+        }
+        &.task-checked .content p {
+          text-decoration: line-through;
+        }
+      }
+    }
+    @include respond-up(xsm) {
+      .tasks-list li .task-container .task-options button {
+        width: 22px;
+        height: 22px;
+        font-size: 15px;
+        &.edit {
+          color: $font-light-color;
+          background-color: $main-dark-bg;
+        }
+        &.delete {
+          color: $main-light-bg;
+          background-color: $red;
+        }
+      }
+    }
+    @include respond-up(usm) {
+      .tasks-list li .task-container {
+        gap: 5px;
+        padding: 5px;
+        padding-left: 30px;
+        input[type="checkbox"] {
+          width: 15px;
+          height: 15px;
+          top: 8px;
+          left: 10px;
+        }
+        .content .task-info .date {
+          font-size: 10px;
+        }
+        .task-options {
+          gap: 5px;
+          button {
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+  .status-btn {
+    color: #ffff;
+    font-size: 14px;
+    text-transform: capitalize;
+    padding: 4px;
+    border-radius: $border-main-raduis;
+    @include respond-up(usm) {
+      font-size: 10px;
+      padding: 1px 2px;
+    }
+    &.completed-bg {
+      background-color: $green;
+    }
+    &.progress-bg {
+      background-color: $blue;
+    }
+    &.pending-bg {
+      background-color: $orange;
+    }
+  }
+  .task-edit-popup .popup-container {
+    max-width: 600px;
+    form {
+      padding: 0 10px;
+      .popup-title {
+        margin-bottom: 5px;
+      }
+      input[type="text"] {
+        font-size: 18px;
+      }
+      select {
+        display: block;
+        font-size: 15px;
+        text-transform: capitalize;
+        padding: 5px 15px;
+        margin: 10px 0 5px;
+        border: 1px solid $border-ccc;
+        border-radius: $border-main-raduis;
+      }
+      button[type="submit"] {
+        display: block;
+        margin: 0px auto;
+      }
+    }
+    @include respond-up(usm) {
+      form {
+        padding: 0px;
+        input[type="text"] {
+          font-size: 12px;
+        }
+        select {
+          font-size: 10px;
+          padding: 2px 5px;
+          margin: 5px 0px 0px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+
+#root .soon-page .container {
+  @include flex-center-v(null);
+  margin-top: 80px;
+  video {
+    width: 400px;
+  }
+  h2 {
+    @include flex-center-h(5px);
+    margin: 10px 0;
+  }
+  p {
+    max-width: 550px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  @include respond-up(sm) {
+    margin-top: 50px;
+    video {
+      width: 250px;
+    }
+  }
+  @include respond-up(usm) {
+    video {
+      width: 200px;
+    }
+    h2 {
+      margin: 10px 0;
+    }
+  }
+}

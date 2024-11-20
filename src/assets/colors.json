@@ -1,0 +1,18 @@
+[
+  { "id": 1, "colorName": "default", "hex": "#05192d" },
+  { "id": 2, "colorName": "Royal Blue", "hex": "#4169E1" },
+  { "id": 3, "colorName": "Deep Pink", "hex": "#FF1493" },
+  { "id": 4, "colorName": "Dodger Blue", "hex": "#1E90FF" },
+  { "id": 5, "colorName": "Slate Blue", "hex": "#6A5ACD" },
+  { "id": 6, "colorName": "Fire Brick", "hex": "#B22222" },
+  { "id": 7, "colorName": "Steel Blue", "hex": "#4682B4" },
+  { "id": 8, "colorName": "Midnight Blue", "hex": "#191970" },
+  { "id": 9, "colorName": "Sea Green", "hex": "#2E8B57" },
+  { "id": 10, "colorName": "Tomato", "hex": "#FF6347" },
+  { "id": 11, "colorName": "Turquoise", "hex": "#40E0D0" },
+  { "id": 12, "colorName": "Magenta", "hex": "#FF00FF" },
+  { "id": 13, "colorName": "Dark Cyan", "hex": "#008B8B" },
+  { "id": 14, "colorName": "Dark Golden", "hex": "#B8860B" },
+  { "id": 15, "colorName": "Dark Orange", "hex": "#FF8C00" },
+  { "id": 16, "colorName": "black", "hex": "#000000" }
+]

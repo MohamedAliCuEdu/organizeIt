@@ -1,0 +1,104 @@
+  const avatarImgInputRef = React.useRef();
+  const [imgName, setImgName] = useState("no file chosen");
+  import FormBtns from "../buttons/formBtns";
+  import { AiOutlineCloudUpload } from "react-icons/ai";
+  const removeFile = () => {
+    setImgName("no file chosen");
+    avatarImgInputRef.current.value = "";
+  };
+
+{/* <div className="seprator">
+          <span>or</span>
+        </div>
+        <form method="POST" onSubmit={uploadUserPhotoApi}>
+          <div className="img-input-container flex-center gap-15">
+            <input
+              ref={avatarImgInputRef}
+              type="file"
+              id="img-upload"
+              className="img-input"
+              accept="image/*"
+              onChange={(e) => {
+                setImgName(e.target.files[0].name);
+                setUserImg(e.target.files[0]);
+              }}
+            />
+            <label htmlFor="img-upload">
+              Choose a file
+              <AiOutlineCloudUpload />
+            </label>
+            <span className="img-name">{imgName}</span>
+          </div>
+          <FormBtns
+            submitValue="upload"
+            isPending={false}
+            formErr={null}
+            handleReset={removeFile}
+          />
+        </form> */}
+
+
+
+
+
+
+
+
+
+
+        ---------scss
+
+        
+  .seprator {
+    @include flex-center-h(null);
+    margin: 8px 0;
+    position: relative;
+    span {
+      background-color: $main-light-bg;
+      padding: 2px 5px;
+      position: relative;
+    }
+    &::before {
+      @include ele(80%, 1px, $border-dark);
+      left: 50%;
+      top: 55%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .img-input-container {
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    input[type="file"] {
+      display: none;
+    }
+    .img-name {
+      flex: 1;
+      text-wrap: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    label {
+      @include flex-between-h(5px);
+      padding: 4px 8px;
+      font-size: 16px;
+      width: 155px;
+      border: 1px solid black;
+      border-radius: $border-main-raduis;
+      background-color: $main-light-bg;
+      cursor: pointer;
+      svg {
+        font-size: 25px;
+        margin-left: 5px;
+        transition: 0ms;
+      }
+      &:hover,
+      &:disabled {
+        color: $alt-font-color;
+        background-color: $gray-bg-hover;
+        border-color: $border-ccc;
+      }
+    }
+  }
+
+
