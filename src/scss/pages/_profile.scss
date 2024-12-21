@@ -423,7 +423,17 @@
         flex-wrap: wrap;
         column-gap: 40px;
         row-gap: 15px;
-        margin-top: 15px;
+        padding-top: 25px;
+        margin-top: 5px;
+        position: relative;
+        .fav-list-msg {
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          position: absolute;
+          top: 0;
+        }
         .select-item-div {
           min-width: calc(50% - 20px);
           position: relative;
@@ -431,7 +441,7 @@
             display: none;
           }
           label {
-            width: 100%;
+            display: block;
             color: $font-dark-color;
             font-size: 18px;
             font-weight: 600;
@@ -457,8 +467,7 @@
             left: 0;
             transition: 0.3s;
           }
-          &.selected::after,
-          &:hover::after {
+          &.selected::after {
             width: 100%;
           }
         }
@@ -508,8 +517,13 @@
       }
     }
     @include respond-up(xsm) {
-      .content ul.items-list .select-item-div label {
-        font-size: 16px;
+      .content ul.items-list {
+        .fav-list-msg {
+          font-size: 12px;
+        }
+        .select-item-div label {
+          font-size: 16px;
+        }
       }
       .section-icon {
         font-size: 80px;
@@ -522,14 +536,19 @@
         margin-bottom: 10px;
         padding-left: 10px;
       }
-      .content ul.items-list .select-item-div {
-        label {
-          font-size: 12px;
-          padding-left: 15px;
+      .content ul.items-list {
+        .fav-list-msg {
+          font-size: 10px;
         }
-        &::before {
-          font-size: 12px;
-          padding: 2px 3px;
+        .select-item-div {
+          label {
+            font-size: 12px;
+            padding-left: 15px;
+          }
+          &::before {
+            font-size: 12px;
+            padding: 2px 3px;
+          }
         }
       }
       .section-icon {

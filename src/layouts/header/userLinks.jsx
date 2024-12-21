@@ -18,7 +18,7 @@ function UserLinks() {
 
   async function handleUserLogout() {
     try {
-      await axiosPrivateApi.get("http://localhost:4000/api/auth/logout");
+      await axiosPrivateApi.get("http://localhost:4000/auth/logout");
       setAuth(null);
     } catch (err) {
       console.log(err);

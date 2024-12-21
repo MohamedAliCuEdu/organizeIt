@@ -7,8 +7,10 @@ const MESSAGES = {
       "5 to 20 charaters,\n must being with a letter, letters, numbers, underscores allowed.",
     invalidPassword:
       "Password must be at least 8 characters,\n long and must include uppercase letters & lowercase letters, numbers, special characters: @#$%^&+=!.",
-    requiredField: "This field is required.",
+    wrongPassword: "The password you entered is incorrect. Please try again.",
+    sameOldPassword: "New password cannot match the old password.",
     passwordMismatch: "Passwords do not match!",
+    requiredField: "This field is required.",
     invalidTag:
       "Invalid tag! Tags must be 1-10 characters long and can include letters, numbers, dashes, and underscores.",
     updateUserInfo: "failed to update your personal information!",
@@ -19,7 +21,7 @@ const MESSAGES = {
     signup: "Registration completed successfully!",
     updateProfile: "Profile updated successfully!",
     addNote: "Note added successfully!",
-    changePassword: "Password changed successfully!",
+    changeCredentials: "Your username and password have been updated. Logging out...",
     updateUserInfo: "your information updated successfully.",
   },
   confirm: {

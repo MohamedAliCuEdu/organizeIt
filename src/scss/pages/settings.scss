@@ -1,0 +1,42 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../helpers/breakpoints" as *;
+
+body #root .settings-page {
+  .container {
+    & > section {
+      padding: 10px 25px;
+      background-color: $main-light-bg;
+      margin-bottom: 15px;
+      .section-title {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        svg {
+          margin-right: 5px;
+        }
+      }
+      @include respond-up(xsm) {
+        padding: 10px;
+        .section-title {
+          margin-bottom: 5px;
+        }
+      }
+      form .input-div {
+        margin-bottom: 8px;
+        label {
+          display: block;
+          margin-bottom: 4px;
+        }
+        .invalid-input-msg {
+          text-align: end;
+        }
+        &.password-div,
+        &.new-password-div,
+        &.confirm-password-div {
+          position: relative;
+        }
+      }
+    }
+  }
+}

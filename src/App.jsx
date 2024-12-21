@@ -13,6 +13,7 @@ import Tasks from "./pages/tasks";
 import AllNotes from "./pages/allNotes";
 import ArchiveNotes from "./pages/archiveNotes";
 import Profile from "./pages/profile";
+import Settings from "./pages/settings";
 import Contact from "./pages/contact";
 
 // authentication context:
@@ -116,7 +117,7 @@ function App() {
                     <Route path="/files" element={<Soon />}></Route>
                     <Route path="/plans" element={<Soon />}></Route>
                     <Route path="/calender" element={<Soon />}></Route>
-                    <Route path="/settings" element={<Soon />}></Route>
+                    <Route path="/settings" element={<Settings />}></Route>
                     <Route path="/contact-us" element={<Contact />}></Route>
                   </Route>
                 </Route>

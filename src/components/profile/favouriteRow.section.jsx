@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useProfileContext from "../../hooks/useProfileContext";
 import classNames from "classnames";
+import { FaCircleInfo } from "react-icons/fa6";
 
 function favouriteRowSection({
   children,
@@ -77,6 +78,12 @@ function favouriteRowSection({
           )}
         </div>
         <ul className={`items-list ${metaColor}`}>
+          {userFavourites?.[name]?.length > 0 && (
+            <span className="fav-list-msg">
+              <FaCircleInfo />
+              select item to delete.
+            </span>
+          )}
           {userFavourites?.[name]?.length > 0 ? (
             userFavourites[name].map((item, idx) => (
               <div

@@ -42,7 +42,7 @@
     font-weight: 600;
     color: $font-dark-color;
     font-size: 22px;
-    @include respond-up(xsm){
+    @include respond-up(xsm) {
       font-size: 18px;
     }
   }
@@ -84,20 +84,18 @@
     }
   }
 }
-.red-btn{
+.red-btn {
   background-color: $red;
   color: $font-light-color;
-  &:hover{
+  &:hover {
     background-color: $red-hover;
-    
   }
 }
-.green-btn{
+.green-btn {
   background-color: $green;
   color: $font-light-color;
-  &:hover{
+  &:hover {
     background-color: $green-hover;
-    
   }
 }
 .dark-btn {
@@ -130,7 +128,7 @@
   }
 }
 
-.gray-btn { 
+.gray-btn {
   color: $font-dark-color;
   background-color: $gray-bg;
 }
@@ -183,3 +181,14 @@
   }
 }
 
+.pwd-display-btn {
+  height: 100%;
+  font-size: 22px;
+  position: absolute;
+  right: 10px;
+  bottom: -50%;
+  transform: translateY(-50%);
+  @include respond-up(xsm) {
+    font-size: 18px;
+  }
+}

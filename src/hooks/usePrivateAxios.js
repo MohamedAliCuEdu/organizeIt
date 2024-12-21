@@ -20,14 +20,13 @@ function usePrivateAxios() {
       },
       (err) => Promise.reject(err)
     );
-    // check if ther response err (403) have [authentication] header:
+    // check if the response err (403) have [authentication] header:
     const resIntercept = axiosPrivateApi.interceptors.response.use(
       (res) => res,
       async (err) => {
-        console.log(err);
         const prevReq = err?.config;
         const newAccessToken = await refresh();
-        if (err?.response && !prevReq?.sent) {
+        if (err?.response && err?.response.status === 403 && !prevReq?.sent) {
           prevReq.headers.authentication = newAccessToken;
           // add [sent] property for prevent retry request many times:
           prevReq.sent = true;

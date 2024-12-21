@@ -1,12 +1,13 @@
 import REGEX from "./regex";
 
-const validateField = (name, value, formData) => {
+const validateField = (name, value) => {
   let error = "";
   switch (name) {
     case "username":
       error = REGEX.USERNAME.test(value) ? "" : "invalid username|";
       break;
     case "password":
+    case "newPassword":
       error = REGEX.PASSWORD.test(value) ? "" : "invalid password!";
       break;
     case "fname":
