@@ -4,7 +4,6 @@ import { useSearchParams } from "react-router-dom";
 import useTasksContext from "../../hooks/useTasksContext";
 
 function StatusFilter() {
-  console.log("--status");
   const { taskStats } = useTasksContext();
 
   const [searchParams, setSearchParams] = useSearchParams();

@@ -5,7 +5,6 @@ import PageTitle from "../components/pageTitle";
 import { FiEdit } from "react-icons/fi";
 
 function Note() {
-  console.log("note edit page");
   const { noteId, noteDates } = useNoteContext();
   return (
     <main className="note-page">

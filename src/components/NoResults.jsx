@@ -1,7 +1,6 @@
 import React from "react";
 
 function NoResults({ msg }) {
-  console.log("no");
   return (
     <div className="no-results-match">
       <img src="/no-results.svg" alt="no-results" />

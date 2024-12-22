@@ -7,7 +7,6 @@ function MsgPopup({ children, popupName }) {
   const { closePopup } = usePopupContext();
 
   const handleOverlayClick = (e) => {
-    console.log("Dw")
     if (e.target.classList.contains("popup-overlay")) closePopup();
   };
 

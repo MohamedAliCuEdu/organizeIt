@@ -11,7 +11,7 @@ export function ArchiveNotesProvider({ children }) {
   const { auth } = useAuth();
   const axiosPrivateApi = usePrivateAxios();
   const { handleErrMsg } = usePopupContext();
-  const { setAllNotes } = useAllNotesContext();
+  const { allNotes, setAllNotes } = useAllNotesContext();
 
   const URL = `archive-notes/${auth?.userInfo.userId}/`;
 
@@ -45,63 +45,82 @@ export function ArchiveNotesProvider({ children }) {
   // notes api requests:
   // 1. un archive note:
   const unArchiveNoteApi = async (noteId) => {
+    // 1. Backup the current states:
+    const originalArNotes = [...archiveNotes];
+    const originalNotes = [...allNotes];
     try {
-      // 1. make patch request api:
-      await axiosPrivateApi.patch(URL + "unarchive/" + noteId);
-      // 2. update archiveNotes & allNotes:
-      setArchiveNotes((prev) => prev.filter((note) => note._id !== noteId));
+      // 2. update states:
       let noteFound = archiveNotes.find((note) => note._id === noteId);
+      setArchiveNotes((prev) => prev.filter((note) => note._id !== noteId));
       setAllNotes((prev) => [...prev, { ...noteFound, isArchived: false }]);
+      // 3. make patch request api:
+      await axiosPrivateApi.patch(URL + "unarchive/" + noteId);
     } catch (err) {
       console.log(err);
       !err?.response
         ? handleErrMsg("server not response!")
         : handleErrMsg("failed to unarchive note!");
+      // Rollback state if the request fails
+      setArchiveNotes([...originalArNotes]);
+      setAllNotes([...originalNotes]);
     }
   };
   // 2. un archive all notes:
   const unArchiveAllNotesApi = async () => {
+    // 1. Backup the current states:
+    const originalNotes = [...allNotes];
+    const originalArNotes = [...archiveNotes];
     try {
-      // 1. make patch request api:
-      await axiosPrivateApi.patch(URL + "unarchive");
-      // 2. set isArchived in every note to false:
+      // 2. update states:
       const updateNotes = archiveNotes.map((note) => note.isArchived === false);
-      // 2. update archiveNotes & allNotes:
-      setAllNotes((prev) => [...prev, ...updateNotes]);
       setArchiveNotes([]);
+      setAllNotes((prev) => [...prev, ...updateNotes]);
+      // 3. make patch request api:
+      await axiosPrivateApi.patch(URL + "unarchive");
     } catch (err) {
       console.log(err);
       !err?.response
         ? handleErrMsg("server not response!")
         : handleErrMsg("failed to unarchive all notes!");
+      // Rollback state if the request fails
+      setAllNotes([...originalNotes]);
+      setArchiveNotes([...originalArNotes]);
     }
   };
   // 3. delete note:
   const deleteNoteApi = async (noteId) => {
+    // 1. Backup the current state:
+    const originalArNotes = [...archiveNotes];
     try {
-      // 1. make delete request api:
-      await axiosPrivateApi.delete(URL + noteId);
-      // 2. filter notes by noteId:
+      // 2. update state:
       setArchiveNotes((prev) => prev.filter((note) => note._id !== noteId));
+      // 3. make delete request api:
+      await axiosPrivateApi.delete(URL + noteId);
     } catch (err) {
       console.log(err);
       !err?.response
         ? handleErrMsg("server not response!")
         : handleErrMsg("failed to delete note!");
+      // Rollback state if the request fails
+      setArchiveNotes([...originalArNotes]);
     }
   };
   // 4. delete all archive notes:
   const deleteAllArchiveNotesApi = async () => {
+    // 1. Backup the current state:
+    const originalArNotes = [...archiveNotes];
     try {
-      // 1. make delete request api:
-      await axiosPrivateApi.delete(URL);
-      // 2. update archiveNotes:
+      // 2. update state:
       setArchiveNotes([]);
+      // 3. make delete request api:
+      await axiosPrivateApi.delete(URL);
     } catch (err) {
       console.log(err);
       !err?.response
         ? handleErrMsg("server not response!")
         : handleErrMsg("failed to delete all notes!");
+      // Rollback state if the request fails
+      setArchiveNotes([...originalArNotes]);
     }
   };
 

@@ -3,7 +3,6 @@ import useTasksContext from "../../hooks/useTasksContext";
 import { IoSearch } from "react-icons/io5";
 
 function SearchTask() {
-  console.log("--search");
   const { searchInput, handleSearchInput } = useTasksContext();
 
   return (

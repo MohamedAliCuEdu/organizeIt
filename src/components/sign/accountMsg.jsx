@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 function AccountMsg() {
-  console.log("account msg ----")
   const location = useLocation();
 
   return (

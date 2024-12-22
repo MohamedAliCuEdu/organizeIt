@@ -5,7 +5,7 @@ function NoContent({children}) {
   return (
     <div className="empty-list">
       <BsFillEmojiSmileUpsideDownFill />
-      <h2>there is no content yet!</h2>
+      <h2>there is no content!</h2>
       {children}
     </div>
   );

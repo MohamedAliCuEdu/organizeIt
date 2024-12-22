@@ -10,7 +10,6 @@ import ErrorDiv from "../components/error-div";
 import MESSAGES from "../constants/messages";
 
 function Profile() {
-  console.log("---profile page");
   const { isLoading, fetchDataErr, avatarEditView, bannerEditView } =
     useProfileContext();
 

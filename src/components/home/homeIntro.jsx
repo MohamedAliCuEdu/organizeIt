@@ -2,7 +2,6 @@ import React from "react";
 import { GiNotebook } from "react-icons/gi";
 
 function HomeIntro() {
-  console.log("--- home")
   return (
     <div className="home-intro">
       <GiNotebook className="home-icon" />

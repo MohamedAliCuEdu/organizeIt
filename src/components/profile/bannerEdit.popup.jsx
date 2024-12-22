@@ -14,7 +14,6 @@ function BannerEditPopup() {
   );
   // handle bannerUrl change:
   const handleBannerUrl = (val) => {
-    console.log(val)
     setBannerUrl(val);
   };
   // reset bannerUrl:
@@ -29,7 +28,10 @@ function BannerEditPopup() {
       <form
         className="select-banner-form"
         method="POST"
-        onSubmit={(e) => updateBannerUrlApi(e, bannerUrl)}
+        onSubmit={(e) => {
+          updateBannerUrlApi(e, bannerUrl);
+          handleBannerPopupView();
+        }}
       >
         <h3 className="popup-title">change banner:</h3>
         <Suspense fallback={<h2 className="loading">loading...</h2>}>

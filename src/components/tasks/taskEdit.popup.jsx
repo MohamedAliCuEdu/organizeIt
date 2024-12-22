@@ -3,15 +3,14 @@ import useTasksContext from "../../hooks/useTasksContext";
 import SectionPopup from "../popups/components/section.popup";
 
 function TaskEditPopup() {
-  console.log("--edit");
   const { currentTask, handleCurrentTask, updateTaskApi, handleTaskEditView } =
     useTasksContext();
   const { content, status } = currentTask;
   return (
     <SectionPopup popupName="task-edit-popup" callBack={handleTaskEditView}>
       <form
-        onSubmit={async (e) => {
-          await updateTaskApi(e);
+        onSubmit={(e) => {
+          updateTaskApi(e);
           handleTaskEditView();
         }}
       >
@@ -32,7 +31,6 @@ function TaskEditPopup() {
           value={status || "pending"}
           onChange={handleCurrentTask}
         >
-          <label htmlFor="completed"></label>
           <option name="completed" value="completed">
             completed
           </option>

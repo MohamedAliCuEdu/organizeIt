@@ -5,8 +5,9 @@
 
 .popup-overlay {
   @include overlay($overlay-shadow-bg);
-  z-index: 1000;
   padding: 0 15px;
+  position: fixed;
+  z-index: 1000;
   .popup-container {
     background-color: $main-light-bg;
     border-radius: $border-main-raduis;

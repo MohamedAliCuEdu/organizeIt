@@ -29,7 +29,6 @@ export function ProfileProvider({ children }) {
   });
   React.useEffect(() => {
     if (data) {
-      console.log(data);
       const { favourites, ...info } = data;
       setUserData(info);
       setUserFavourites(favourites);
@@ -47,15 +46,20 @@ export function ProfileProvider({ children }) {
   // 2. update avatar bg color api:
   const updateAvatarColorApi = async (e, avatarColor) => {
     e.preventDefault();
+    // 1. Backup the current states:
+    const originalUserData = { ...userData };
+    const originalAuth = { ...auth };
     try {
       // check if avatarColor is exist & its not the same:
       if (avatarColor && userData?.avatarColor !== avatarColor) {
-        await axiosPrivateApi.patch(URL + "profile", { avatarColor });
+        // 2. update state:
         setAuth((prev) => ({
           ...prev,
           userInfo: { ...prev.userInfo, avatarColor },
         }));
         setUserData((prev) => ({ ...prev, avatarColor }));
+        // 3. make patch request api:
+        await axiosPrivateApi.patch(URL + "profile", { avatarColor });
         handleSuccess(
           "avatar color changed successfully.",
           handleAvatarPopupView
@@ -64,94 +68,130 @@ export function ProfileProvider({ children }) {
     } catch (err) {
       console.log(err);
       handleErrMsg("failed to change avatar color!");
+      // Rollback state if the request fails:
+      setUserData({ ...originalUserData });
+      setAuth([...originalAuth]);
     }
   };
   // 3. update banner url color api:
   const updateBannerUrlApi = async (e, bannerUrl) => {
     e.preventDefault();
+    // 1. Backup the current state:
+    const originalUserData = { ...userData };
     try {
       // check if bannerUrl is exist & its not the same:
       if (bannerUrl && userData?.bannerUrl !== bannerUrl) {
+        // 2. update state:
+        setUserData((prev) => ({ ...prev, bannerUrl }));
+        // 3. make patch request api:
         await axiosPrivateApi.patch(URL + "profile", { bannerUrl });
         handleSuccess("banner changed successfully.", handleBannerPopupView);
-        setUserData((prev) => ({ ...prev, bannerUrl }));
       }
     } catch (err) {
       console.log(err);
       handleErrMsg("failed to change banner img!");
+      // Rollback state if the request fails:
+      setUserData({ ...originalUserData });
     }
   };
   // 3) quote section functions:
-  // 3. update quote api:
+  // 1. update quote api:
   const updateQuoteApi = async (e, quote) => {
     e.preventDefault();
+    // 1. Backup the current state:
+    const originalUserData = { ...userData };
     try {
-      await axiosPrivateApi.patch(URL + "profile", { quote });
+      // 2. update state:
       setUserData((prev) => ({ ...prev, quote }));
+      // 3. make patch request api:
+      await axiosPrivateApi.patch(URL + "profile", { quote });
       handleSuccess("your quote changed successfully.");
     } catch (err) {
       console.log(err);
       handleErrMsg("failed to change quote!");
+      // Rollback state if the request fails:
+      setUserData({ ...originalUserData });
     }
   };
   // 3. remove quote api:
   const removeQuoteApi = async () => {
+    // 1. Backup the current state:
+    const originalUserData = { ...userData };
     try {
-      await axiosPrivateApi.patch(URL + "profile", { quote: "" });
+      // 2. update state:
       setUserData((prev) => ({ ...prev, quote: "" }));
+      // 3. make patch request api:
+      await axiosPrivateApi.patch(URL + "profile", { quote: "" });
     } catch (err) {
       console.log(err);
       handleErrMsg("failed to remove quote!");
+      // Rollback state if the request fails:
+      setUserData({ ...originalUserData });
     }
   };
   // update user info api:
   const updateUserInfoApi = async (e, userInfo) => {
     e.preventDefault();
+    // 1. Backup the current state:
+    const originalUserData = { ...userData };
     try {
-      await axiosPrivateApi.put(URL + "personal_info", userInfo);
+      // 2. update state:
       setUserData((prev) => ({ ...prev, ...userInfo }));
+      // 3. make put request api:
+      await axiosPrivateApi.put(URL + "personal_info", userInfo);
       handleSuccess(MESSAGES.success.updateUserInfo);
     } catch (err) {
       console.log(err);
+      // Rollback state if the request fails:
+      setUserData({ ...originalUserData });
       handleErrMsg(MESSAGES.errors.updateUserInfo);
     }
   };
   // 3. add favourite item api:
   const addFavouriteItemApi = async (e, favouriteType, newItem) => {
     e.preventDefault();
+    // 1. Backup the current state:
+    const originalList = { ...userFavourites };
     try {
-      // 1. create new fav list array:
+      // 2. update state:
+      // create new fav list array:
       let updatedList = [...userFavourites[favouriteType], newItem];
-      // 1. make api request:
-      await axiosPrivateApi.patch(URL + "favourites", {
-        [favouriteType]: updatedList,
-      });
-      // 2. update favourite state1:
+      // update favourite state1:
       setUserFavourites((prev) => ({
         ...prev,
         [favouriteType]: updatedList,
       }));
+      // 2. make patch request api:
+      await axiosPrivateApi.patch(URL + "favourites", {
+        [favouriteType]: updatedList,
+      });
     } catch (err) {
       console.log(err);
       handleErrMsg("failed to update list!");
+      // Rollback state if the request fails:
+      setUserFavourites({...originalList});
     }
   };
   // 3.remove favourite item api:
   const removeFavouriteItemApi = async (favouriteType, targetItem) => {
+    // 1. Backup the current state:
+    const originalList = { ...userFavourites };
     try {
-      // 1. filter favourite items by create new array:
+      // 2. update state:
+      // filter favourite items by create new array:
       let filterList = userFavourites[favouriteType].filter(
         (e) => e !== targetItem
       );
-      // 2. make api request:
+      setUserFavourites((prev) => ({ ...prev, [favouriteType]: filterList }));
+      // 2. make patch request api:
       await axiosPrivateApi.patch(URL + "favourites", {
         [favouriteType]: filterList,
       });
-      // 3. update user favourites state:
-      setUserFavourites((prev) => ({ ...prev, [favouriteType]: filterList }));
     } catch (err) {
       console.log(err);
       handleErrMsg("failed to remove item!");
+      // Rollback state if the request fails:
+      setUserFavourites({...originalList});
     }
   };
 

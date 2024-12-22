@@ -25,9 +25,7 @@ function UsernameSection({ handleUserLogout }) {
   const [userFocus, setUserFocus] = useState(false); // user input focus state:
   const [pwdDisplay, setPwdDisplay] = useState(false); // display password:
   const [isPending, setIsPending] = useState(false); // pending submit btn:
-  React.useEffect(() => {
-    console.log(auth);
-  }, [auth]);
+  
   React.useEffect(() => {
     // make sure inputs have no errors, all inputs not empty:
     let noEmpty = Object.values(formData).every((e) => e);
@@ -120,7 +118,7 @@ function UsernameSection({ handleUserLogout }) {
           </div>
         </div>
         <div className="password-div input-div">
-          <label htmlFor="password">password</label>
+          <label htmlFor="password-user-section">password</label>
           <div
             className={classNames("input-container", {
               "invalid-input": formErrs?.password,
@@ -128,7 +126,7 @@ function UsernameSection({ handleUserLogout }) {
           >
             <input
               className="text-input"
-              id="password"
+              id="password-user-section"
               type={pwdDisplay ? "text" : "password"}
               name="password"
               placeholder="********"
@@ -136,6 +134,7 @@ function UsernameSection({ handleUserLogout }) {
               maxLength="30"
               value={formData.password}
               onChange={handleFormData}
+              autoComplete="off"
               required
             />
             {formData.password && (

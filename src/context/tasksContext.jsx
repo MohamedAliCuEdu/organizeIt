@@ -22,7 +22,6 @@ export function TasksProvider({ children }) {
   });
   // update all tasks state
   useEffect(() => {
-    console.log("F")
     setAllTasks(data);
   }, [data]);
   // update all tasks status stats:
@@ -94,45 +93,57 @@ export function TasksProvider({ children }) {
   // 2) update task:
   const updateTaskApi = async (e, taskId) => {
     e.preventDefault();
+    // 1. Backup the current state:
+    const originalTasks = [...allTasks];
     try {
       // check for taskId:
       // if exist then its for check task
       // not exist so we will use currentTask
       if (taskId) {
-        await axiosPrivateApi.patch(URL + taskId + "/checked");
+        // 2. update state:
         let allUpdated = allTasks.map((task) =>
           task._id === taskId ? { ...task, checked: !task.checked } : task
         );
         setAllTasks(allUpdated);
+        // make patch request api:
+        await axiosPrivateApi.patch(URL + taskId + "/checked");
       } else {
-        await axiosPrivateApi.put(URL + currentTask._id, {
-          content: currentTask.content,
-          status: currentTask.status,
-        });
+        // 2. update state:
         let allUpdated = allTasks.map((task) =>
           task._id === currentTask._id ? currentTask : task
         );
         setAllTasks(allUpdated);
+        // make put request api:
+        await axiosPrivateApi.put(URL + currentTask._id, {
+          content: currentTask.content,
+          status: currentTask.status,
+        });
       }
     } catch (err) {
       console.log(err);
       !err?.response
         ? handleErrMsg("server not response!")
         : handleErrMsg("failed to save changes!");
+      // Rollback state if the request fails
+      setAllTasks([...originalTasks]);
     }
   };
   // 3) delete task:
   const deleteTaskApi = async (taskId) => {
+    // 1. Backup the current state:
+    const originalTasks = [...allTasks];
     try {
-      // make a delete request api:
-      await axiosPrivateApi.delete(URL + taskId);
-      // filter tasks:
+      // 2.update state:
       setAllTasks((prev) => prev.filter((task) => task._id !== taskId));
+      // 3. make a delete request api:
+      await axiosPrivateApi.delete(URL + taskId);
     } catch (err) {
       console.log(err);
       !err?.response
         ? handleErrMsg("server not response!")
         : handleErrMsg("failed to delete task!");
+      // Rollback state if the request fails
+      setAllTasks([...originalTasks]);
     }
   };
 

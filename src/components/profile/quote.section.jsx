@@ -7,19 +7,17 @@ import usePopupContext from "../../hooks/usePopupContext";
 import MESSAGES from "../../constants/messages";
 
 function QuoteSection() {
-  console.log("----- quoteSection");
   const { handleConfirmView } = usePopupContext();
   const { userData, updateQuoteApi, removeQuoteApi } = useProfileContext();
 
-  const [newQuote, setNewQuote] = useState(userData?.quote || "");
+  const [quote, setQuote] = useState(userData?.quote || "");
   const [editQuoteView, setEditQuoteView] = useState(false);
   // handle new quote change:
-  const handleNewQuote = (val) => {
-    setNewQuote(val);
+  const handleQuote = (val) => {
+    setQuote(val);
   };
-  // handle open/close quote edit form:
+  // handle quote edit view:
   const handleEditQuoteView = () => {
-    setNewQuote(userData?.quote || "");
     setEditQuoteView(!editQuoteView);
   };
 
@@ -30,7 +28,7 @@ function QuoteSection() {
           <div className="quote-icon">
             <FaQuoteLeft />
           </div>
-          <q>{userData.quote || "your favourite quote."}</q>
+          <q>{userData?.quote || "your favourite quote."}</q>
           <div className="quote-btns">
             <button
               className="edit-quote-btn"
@@ -54,7 +52,7 @@ function QuoteSection() {
         <form
           className="edit-quote-form"
           method="POST"
-          onSubmit={(e) => updateQuoteApi(e, newQuote)}
+          onSubmit={(e) => updateQuoteApi(e, quote)}
         >
           <button
             className="back-to-quote-btn"
@@ -69,19 +67,19 @@ function QuoteSection() {
               name="user-quote"
               type="text"
               id="user-quote"
-              value={newQuote}
-              onChange={(e) => handleNewQuote(e.target.value)}
+              value={quote}
+              onChange={(e) => handleQuote(e.target.value)}
               maxLength="70"
               placeholder="my favourite quote"
               required
             />
-            <div className="letters-count">{newQuote?.length || 0}/70</div>
+            <div className="letters-count">{quote?.length || 0}/70</div>
           </div>
           <input
             className="md-btn blue-btn"
             type="submit"
             value="save"
-            disabled={userData?.quote === newQuote}
+            disabled={quote?.length <= 0 || quote === userData?.quote}
           />
         </form>
       )}

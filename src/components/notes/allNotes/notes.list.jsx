@@ -31,19 +31,21 @@ function NotesList() {
     <div
       className={classNames("notes-list", { "notes-grid": list?.length > 0 })}
     >
-      <AllNotesIndex.AddNoteCard />
       {list.length <= 0 ? (
         <NoResults msg="No notes found with that title & same tag. Try a different keyword" />
       ) : (
-        list.map((note) => (
-          <NoteCard
-            key={note._id}
-            note={note}
-            archiveNoteApi={archiveNoteApi}
-            deleteNoteApi={deleteNoteApi}
-            callback={openNote}
-          />
-        ))
+        <>
+          <AllNotesIndex.AddNoteCard />
+          {list.map((note) => (
+            <NoteCard
+              key={note._id}
+              note={note}
+              archiveNoteApi={archiveNoteApi}
+              deleteNoteApi={deleteNoteApi}
+              callback={openNote}
+            />
+          ))}
+        </>
       )}
     </div>
   );

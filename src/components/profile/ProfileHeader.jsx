@@ -10,7 +10,6 @@ function ProfileHeader() {
   const { auth } = useAuth();
   const { handleAvatarPopupView, handleBannerPopupView, userData } =
     useProfileContext();
-  console.log("----profile - header");
 
   let signUpDate = new Date(userData.createdAt).toLocaleDateString();
   let lastUpdateDate = new Date(userData.updatedAt).toLocaleDateString();

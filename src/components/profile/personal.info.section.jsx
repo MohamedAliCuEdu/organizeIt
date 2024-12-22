@@ -3,18 +3,25 @@ import arrOfCountries from "../../assets/countries.json";
 import useProfileContext from "../../hooks/useProfileContext";
 import FormBtns from "../buttons/formBtns";
 import { BsPersonLinesFill } from "react-icons/bs";
+import formatDateToInput from "../../utils/formatDateToInput";
 
 function PersonalInfoSection() {
   const { userData, updateUserInfoApi } = useProfileContext();
   // 1. states:
   const [infoEditing, setInfoEditing] = useState(false);
-  const [userInfo, setUserInfo] = useState({
-    fname: userData.fname,
-    lname: userData.lname,
-    gender: userData.gender,
-    country: userData.country,
-    education: userData.education,
-  });
+  const [userInfo, setUserInfo] = useState({});
+
+  React.useEffect(() => {
+    setUserInfo({
+      fname: userData.fname,
+      lname: userData.lname,
+      gender: userData.gender,
+      birthDate: formatDateToInput(userData.birthDate),
+      country: userData.country,
+      education: userData.education,
+    });
+  }, [userData]);
+
   // 2. handle user info editing state:
   const handleInfoEditing = () => {
     setInfoEditing(!infoEditing);

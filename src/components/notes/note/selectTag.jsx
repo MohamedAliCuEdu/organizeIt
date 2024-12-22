@@ -4,7 +4,7 @@ import useNoteContext from "../../../hooks/useNoteContext";
 
 function SelectTag() {
   const { allTags } = useAllNotesContext();
-  const { currentTags, selectedTag, handleSelectTag } = useNoteContext();
+  const { currentTags, handleSelectTag } = useNoteContext();
 
   return (
     <select

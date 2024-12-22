@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import useSignupContext from "../../hooks/useSignupContext";
 import PwdDisplayBtn from "../buttons/pwdDisplay.btn";
 import MESSAGES from "../../constants/messages";
-import arrOfCountries from "../../assets/countries.json";
 import { FaMale } from "react-icons/fa";
 import { FaFemale } from "react-icons/fa";
 import classNames from "classnames";
@@ -90,6 +89,7 @@ function SignupForm({ children }) {
               onBlur={() => {
                 setPwdFocus(false);
               }}
+              autoComplete="off"
               required
             />
             {formData.password && (
@@ -123,6 +123,7 @@ function SignupForm({ children }) {
               maxLength="30"
               value={formData.confirm_pwd}
               onChange={handleFormChange}
+              autoComplete="off"
               required
             />
             {!pwdMatch && (

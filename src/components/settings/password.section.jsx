@@ -93,7 +93,7 @@ function PasswordSection({ handleUserLogout }) {
       </h3>
       <form action="POST" onSubmit={handleSubmit}>
         <div className="old-password-div input-div">
-          <label htmlFor="password">password</label>
+          <label htmlFor="password-pwd-section">password</label>
           <div
             className={classNames("input-container", {
               "invalid-input": formErrs?.password,
@@ -101,7 +101,7 @@ function PasswordSection({ handleUserLogout }) {
           >
             <input
               className="text-input"
-              id="password"
+              id="password-pwd-section"
               type={pwdDisplay ? "text" : "password"}
               name="password"
               placeholder="********"
@@ -109,6 +109,7 @@ function PasswordSection({ handleUserLogout }) {
               maxLength="30"
               value={formData.password}
               onChange={handleFormData}
+              autoComplete="off"
               required
             />
             {formData.password && (
@@ -138,6 +139,7 @@ function PasswordSection({ handleUserLogout }) {
               onChange={handleFormData}
               onFocus={() => setNewPwdFocus(true)}
               onBlur={() => setNewPwdFocus(false)}
+              autoComplete="off"
               required
             />
             {newPwdFocus && formErrs?.newPassword && (
@@ -165,6 +167,7 @@ function PasswordSection({ handleUserLogout }) {
               maxLength="30"
               value={formData.confirmPassword}
               onChange={handleFormData}
+              autoComplete="off"
               required
             />
             {!pwdMatch && (

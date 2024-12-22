@@ -9,7 +9,6 @@ import { FaTasks } from "react-icons/fa";
 import MESSAGES from "../constants/messages";
 
 function Tasks() {
-  console.log("--page");
   const { isLoading, fetchDataErr, allTasks, taskEdit } = useTasksContext();
 
   return (

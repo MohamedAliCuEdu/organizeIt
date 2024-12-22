@@ -1,5 +1,4 @@
 import React from "react";
-import { BsEmojiSmile, BsEmojiExpressionless } from "react-icons/bs";
 
 function KnowMeCheckbox({ author, handleAuthorInput }) {
   return (

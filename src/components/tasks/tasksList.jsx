@@ -5,7 +5,6 @@ import TasksIndex from "./tasksIndex";
 import NoResults from "../NoResults";
 
 function TasksList() {
-  console.log("--list");
   const { allTasks, searchInput } = useTasksContext();
 
   const [searchParams] = useSearchParams();

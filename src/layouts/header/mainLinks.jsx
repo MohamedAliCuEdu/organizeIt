@@ -5,7 +5,6 @@ import { FiMenu } from "react-icons/fi";
 import useLayoutContext from "../../hooks/useLayoutContext";
 
 function MainLinks() {
-  console.log("---left-links");
   const { handleNavDisplay } = useLayoutContext();
 
   return (

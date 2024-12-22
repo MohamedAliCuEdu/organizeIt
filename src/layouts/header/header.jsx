@@ -7,7 +7,6 @@ import MainLinks from "./mainLinks";
 import useAuth from "../../hooks/useAuth";
 
 function Header() {
-  console.log("---header");
   const { auth } = useAuth();
 
   return (

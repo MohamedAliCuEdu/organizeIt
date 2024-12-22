@@ -39,7 +39,6 @@ export function SignupProvider({ children }) {
   const handleFormChange = (e) => {
     // 1. destructure name & value:
     let { name, value } = e.target;
-    console.log(value);
     // 2. validate value:
     let error = validateField(name, value, formData);
     // 3. update states:

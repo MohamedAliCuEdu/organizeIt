@@ -78,44 +78,56 @@ export function AllNotesProvider({ children }) {
   };
   // delete note:
   const deleteNoteApi = async (noteId) => {
+    // 1. Backup the current state:
+    const originalNotes = [...allNotes];
     try {
-      // 1. make delete request api:
-      await axiosPrivateApi.delete(URL + noteId);
-      // 2. filter notes by noteId:
+      // 2. update state:
       setAllNotes((prev) => prev.filter((note) => note._id !== noteId));
+      // 3. make delete request api:
+      await axiosPrivateApi.delete(URL + noteId);
     } catch (err) {
       console.log(err);
       !err?.response
         ? handleErrMsg("server not response!")
         : handleErrMsg("failed to delete note!");
+      // Rollback state if the request fails
+      setAllNotes([...originalNotes]);
     }
   };
   // delete all notes:
   const deleteAllNotesApi = async () => {
+    // 1. Backup the current state:
+    const originalNotes = [...allNotes];
     try {
-      // 1. make delete request api:
-      await axiosPrivateApi.delete(URL);
-      // 2. set allNotes to []:
+      // 2. update state:
       setAllNotes([]);
+      // 3. make delete request api:
+      await axiosPrivateApi.delete(URL);
     } catch (err) {
       console.log(err);
       !err?.response
         ? handleErrMsg("server not response!")
         : handleErrMsg("failed to delete all notes!");
+      // Rollback state if the request fails
+      setAllNotes([...originalNotes]);
     }
   };
   // archive note:
   const archiveNoteApi = async (noteId) => {
+    // 1. Backup the current state:
+    const originalNotes = [...allNotes];
     try {
-      // 1. make patch request api:
-      await axiosPrivateApi.patch(URL + noteId + "/archive");
-      // 2. update states:
+      // 2. update state:
       setAllNotes((prev) => prev.filter((note) => note._id !== noteId));
+      // 3. make patch request api:
+      await axiosPrivateApi.patch(URL + noteId + "/archive");
     } catch (err) {
       console.log(err);
       !err?.response
         ? handleErrMsg("server not response!")
         : handleErrMsg("failed to archive note!");
+      // Rollback state if the request fails
+      setAllNotes([...originalNotes]);
     }
   };
 

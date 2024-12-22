@@ -32,7 +32,7 @@ const MESSAGES = {
     unArchiveAllNotes: "do you want to unArchive all notes?",
     urAchiveSingleNote: "do you want to unarchive this note?",
     logout: "Are you sure you want to log out?",
-    removeQuote: "Are you sure qou want remove quote?",
+    removeQuote: "Are you sure quotewant remove quote?",
     unsavedChanges:
       "You have unsaved changes. Are you sure you want to leave without saving?",
     resetSettings:

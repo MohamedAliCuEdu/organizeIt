@@ -4,7 +4,6 @@ import useLayoutContext from "../../hooks/useLayoutContext";
 import NavLinks from "./navLinks";
 
 function NavBar() {
-  console.log("--naev");
   const { navDisplay, handleNavDisplay } = useLayoutContext();
 
   return (

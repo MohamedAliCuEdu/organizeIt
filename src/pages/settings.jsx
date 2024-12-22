@@ -9,7 +9,6 @@ import UsernameSection from "../components/settings/username.section";
 import PasswordSection from "../components/settings/password.section";
 
 function Settings() {
-  console.log("---settings page");
   const { setAuth } = useAuth();
   const { handleErrMsg } = usePopupContext();
   const navigate = useNavigate();

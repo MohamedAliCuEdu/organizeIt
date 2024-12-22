@@ -3,7 +3,6 @@ import useTasksContext from "../../hooks/useTasksContext";
 import { MdOutlineAddBox } from "react-icons/md";
 
 function AddTask({}) {
-  console.log("add task -------");
   const { addTaskPending, addTaskApi } = useTasksContext();
 
   // new task state:

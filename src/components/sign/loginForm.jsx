@@ -63,6 +63,7 @@ function LoginForm({ children }) {
             maxLength="30"
             value={formData.password}
             onChange={handleFormChange}
+            autoComplete="off"
             required
           />
           {formData.password && (

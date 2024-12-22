@@ -4,7 +4,6 @@ import useTasksContext from "../../hooks/useTasksContext";
 import classNames from "classnames";
 
 function TaskRow({ task }) {
-  console.log("row task -------");
   const { updateTaskApi, deleteTaskApi, handleTaskEditView } =
     useTasksContext();
   const { _id, content, status, checked, createdAt } = task;

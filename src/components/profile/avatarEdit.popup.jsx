@@ -4,7 +4,6 @@ import colors from "../../assets/colors.json";
 import useProfileContext from "../../hooks/useProfileContext";
 import FormBtns from "../buttons/formBtns";
 import SectionPopup from "../popups/components/section.popup";
-import classNames from "classnames";
 
 function AvatarEditPopup() {
   const { userData, handleAvatarPopupView, updateAvatarColorApi } =
@@ -16,7 +15,6 @@ function AvatarEditPopup() {
   );
   // handle avatar color change:
   const handleAvatarColor = (val) => {
-    console.log(val);
     setAvatarColor(val);
   };
   // reset avatarColor:
@@ -32,7 +30,10 @@ function AvatarEditPopup() {
       <form
         method="POST"
         className="avatar-bg-form"
-        onSubmit={(e) => updateAvatarColorApi(e, avatarColor)}
+        onSubmit={(e) => {
+          updateAvatarColorApi(e, avatarColor);
+          handleAvatarPopupView();
+        }}
       >
         <h3 className="popup-title">select colour:</h3>
         <div className="options">

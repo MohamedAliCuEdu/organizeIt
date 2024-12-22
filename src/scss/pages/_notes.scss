@@ -56,6 +56,16 @@
               transform: translateY(-10px);
             }
           }
+          @include respond-up(sm) {
+            background-color: $dark-bg-hover;
+            svg,
+            h3 {
+              color: $font-light-color;
+            }
+            svg {
+              transform: translateY(-10px);
+            }
+          }
         }
       }
     }
@@ -428,7 +438,6 @@
 .note-view-popup .popup-container {
   width: 550px;
   .content {
-    padding: 15px 15px 25px;
     .note-title {
       display: flex;
       align-items: center;
@@ -448,7 +457,7 @@
       }
     }
     .note-content {
-      max-height: 500px;
+      height: 350px;
       overflow-y: auto;
       overflow-x: hidden;
       line-height: 1.7;
@@ -473,7 +482,7 @@
   }
   @include respond-up(sm) {
     .content .note-content {
-      max-height: 400px;
+      max-height: 300px;
     }
   }
   @include respond-up(xsm) {

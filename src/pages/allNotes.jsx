@@ -22,7 +22,6 @@ function Notes() {
     searchInput,
     handleSearchInput,
   } = useAllNotesContext();
-  console.log(confirmMsg)
 
   return (
     <main className="all-notes-page">
@@ -51,7 +50,6 @@ function Notes() {
           ) : (
             <AllNotesIndex.NotesList />
           )}
-          {/* <AllNotesIndex.NotesBoard /> */}
         </div>
       </div>
     </main>

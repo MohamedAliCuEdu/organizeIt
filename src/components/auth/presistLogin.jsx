@@ -16,7 +16,7 @@ function PresistLogin() {
       try {
         await refresh();
       } catch (err) {
-        console.log(err.message);
+        console.log(err);
       } finally {
         isMount && setIsLoading(false);
       }

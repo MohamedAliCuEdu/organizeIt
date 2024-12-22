@@ -11,7 +11,6 @@ import usePopupContext from "../../hooks/usePopupContext";
 import MESSAGES from "../../constants/messages";
 
 function UserLinks() {
-  console.log("--- user");
   const { auth, setAuth } = useAuth();
   const { handleErrMsg, handleConfirmView } = usePopupContext();
   const navigate = useNavigate();
