@@ -138,13 +138,13 @@ body #root .tasks-page {
     @include respond-up(usm) {
       .tasks-list li .task-container {
         gap: 5px;
-        padding: 5px;
+        padding: 8px 5px;
         padding-left: 30px;
         input[type="checkbox"] {
           width: 15px;
           height: 15px;
-          top: 8px;
-          left: 10px;
+          top: 10px;
+          left: 8px;
         }
         .content .task-info .date {
           font-size: 10px;

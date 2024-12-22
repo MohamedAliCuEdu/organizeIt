@@ -12,18 +12,19 @@ body #root {
         margin: 20px 0 0;
       }
       .content {
+        background-color: $main-light-bg;
+        padding: 20px;
+        box-shadow: $main-shadow;
         @include respond-up(xsm) {
           width: 100%;
+          padding: 10px 20px;
         }
-        background-color: $main-light-bg;
-        padding: 25px 20px;
-        box-shadow: $main-shadow;
         .form-title {
-          margin-bottom: 30px;
+          margin-bottom: 25px;
           position: relative;
           padding: 5px 0;
           @include respond-up(xsm) {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
           }
           &::before {
             @include ele(85px, 3px, $main-dark-bg);
@@ -46,10 +47,10 @@ body #root {
         form {
           position: relative;
           .input-div {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             position: relative;
             .input-container {
-              margin-top: 10px;
+              margin-top: 8px;
             }
           }
         }
@@ -57,7 +58,7 @@ body #root {
           font-weight: 600;
           text-align: center;
           padding: 10px 0;
-          margin-top: 20px;
+          margin-top: 15px;
           position: relative;
           a {
             color: $font-dark-color;
@@ -84,7 +85,7 @@ body #root .signup-page .container {
     width: 100%;
     @include respond-up(xsm) {
       .input-div {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         .input-container {
           margin-top: 5px;
         }
