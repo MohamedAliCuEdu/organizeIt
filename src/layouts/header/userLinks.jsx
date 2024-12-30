@@ -17,7 +17,7 @@ function UserLinks() {
 
   async function handleUserLogout() {
     try {
-      await axiosPrivateApi.get("http://localhost:4000/auth/logout");
+      await axiosPrivateApi.get("https://organize-it-api.vercel.app/");
       setAuth(null);
     } catch (err) {
       console.log(err);
